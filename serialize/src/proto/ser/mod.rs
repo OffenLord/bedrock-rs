@@ -9,11 +9,11 @@ use crate::error::SerilizationError;
 /// use serialize::error::SerilizationError;
 /// use serialize::proto::ser::MCProtoSerialize;
 ///
-/// struct myType {
+/// struct MyType {
 ///     my_data: i32,
 /// }
 ///
-/// impl MCProtoSerialize for myType {
+/// impl MCProtoSerialize for MyType {
 ///     fn proto_serialize(&self, buf: &mut Vec<u8>) -> Result<(), SerilizationError> where Self: Sized {
 ///         // use the byteorder to simplu write it to the buffer
 ///         // this error should be actually handled
