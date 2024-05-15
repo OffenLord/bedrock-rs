@@ -6,6 +6,7 @@ use crate::error::SerilizationError;
 /// ### Example:
 /// ```
 /// use byteorder::WriteBytesExt;
+/// use serialize::error::SerilizationError;
 /// use serialize::proto::ser::MCProtoSerialize;
 ///
 /// struct myType {
