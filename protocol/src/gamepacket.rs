@@ -16,6 +16,7 @@ use crate::packets::play_status::PlayStatusPacket;
 use crate::packets::resource_packs_info::ResourcePacksInfoPacket;
 use crate::packets::resource_packs_response::ResourcePacksResponsePacket;
 use crate::packets::resource_packs_stack::ResourcePacksStackPacket;
+use crate::packets::set_time::SetTime;
 use crate::packets::text::TextPacket;
 
 #[repr(u64)]
@@ -30,7 +31,7 @@ pub enum GamePacket {
     ResourcePackStack(ResourcePacksStackPacket),
     ResourcePackClientResponse(ResourcePacksResponsePacket),
     Text(TextPacket),
-    SetTime(),
+    SetTime(SetTime),
     StartGame(),
     AddPlayer(),
     AddEntity(),
@@ -249,8 +250,8 @@ impl GamePacket {
             GamePacket::Text(pk) => {
                 ser_packet!(buf, GamePacketID::TextID, pk)
             }
-            GamePacket::SetTime() => {
-                unimplemented!()
+            GamePacket::SetTime(pk) => {
+                ser_packet!(buf, GamePacketID::SetTimeID, pk)
             }
             GamePacket::StartGame() => {
                 unimplemented!()
@@ -712,9 +713,7 @@ impl GamePacket {
                 )))
             }
             GamePacketID::TextID => Ok(GamePacket::Text(de_packet!(cursor, TextPacket))),
-            GamePacketID::SetTimeID => {
-                unimplemented!()
-            }
+            GamePacketID::SetTimeID => Ok(GamePacket::Text(de_packet!(cursor, SetTime))),
             GamePacketID::StartGameID => {
                 unimplemented!()
             }
