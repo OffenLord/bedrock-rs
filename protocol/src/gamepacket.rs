@@ -713,7 +713,7 @@ impl GamePacket {
                 )))
             }
             GamePacketID::TextID => Ok(GamePacket::Text(de_packet!(cursor, TextPacket))),
-            GamePacketID::SetTimeID => Ok(GamePacket::Text(de_packet!(cursor, SetTime))),
+            GamePacketID::SetTimeID => Ok(GamePacket::SetTime(de_packet!(cursor, SetTime))),
             GamePacketID::StartGameID => {
                 unimplemented!()
             }
