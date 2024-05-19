@@ -1,3 +1,6 @@
+use serialize_derive::{MCProtoDeserialize, MCProtoSerialize};
+
+#[derive(Debug, MCProtoSerialize, MCProtoDeserialize)]
 pub struct StartGamePacket {
     // target_actor_id: ivar64,
     // target_runtime_id: uvar64,
